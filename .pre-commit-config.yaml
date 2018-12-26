@@ -1,0 +1,13 @@
+repos:
+- repo: local
+  hooks:
+    - id: bash
+      name: Test bash source with shellcheck
+      entry: shellcheck
+      language: system
+      types: [text]
+      files: >
+        (?x)^(
+        install |
+        )$
+      verbose: true

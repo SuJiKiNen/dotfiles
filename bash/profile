@@ -1,0 +1,9 @@
+if [[ -e ~/.bash_aliases ]]
+then
+    source ~/.bash_aliases
+fi
+
+if [[ -e ~/.bash_functions ]]
+then
+    source ~/.bash_functions
+fi

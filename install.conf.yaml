@@ -1,0 +1,21 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+
+- clean: ['~']
+
+- link:
+    ~/.bash_aliases: bash/aliases
+    ~/.bash_functions: bash/functions
+    ~/.bash_profile: bash/profile
+
+- link:
+    ~/.oh-my-zsh: submodules/oh-my-zsh
+    ~/.zshrc: oh-my-zsh/oh-my-zshrc
+    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: submodules/zsh-autosuggestions
+
+- link:
+    ~/.flake8: lang/python/flake8
+    ~/.isort.cfg: lang/python/isort.cfg
