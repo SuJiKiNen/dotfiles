@@ -19,3 +19,4 @@
 - link:
     ~/.flake8: lang/python/flake8
     ~/.isort.cfg: lang/python/isort.cfg
+    ~/.ipython/profile_default/ipython_config.py: lang/python/ipython_config.py
