@@ -99,3 +99,8 @@ source $ZSH/oh-my-zsh.sh
 
 # load bash settings
 [[ -e ~/.bash_profile ]] && emulate sh -c 'source ~/.bash_profile'
+
+# source machine-local zshrc
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
+fi
