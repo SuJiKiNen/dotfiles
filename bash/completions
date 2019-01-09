@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+_pipsrc()
+{
+    COMPREPLY=( $(compgen -W "aliyun douban edu") )
+}
+complete -F _pipsrc pipsrc

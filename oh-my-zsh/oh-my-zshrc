@@ -97,6 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# enable bash completion
+# this must happen before source your bash completion scripts
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
 # load bash settings
 [[ -e ~/.bash_profile ]] && emulate sh -c 'source ~/.bash_profile'
 

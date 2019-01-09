@@ -7,3 +7,8 @@ if [[ -e ~/.bash_functions ]]
 then
     source ~/.bash_functions
 fi
+
+if [[ -e ~/.bash_completions ]]
+then
+    source ~/.bash_completions
+fi

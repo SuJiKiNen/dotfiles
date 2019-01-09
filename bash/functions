@@ -38,3 +38,24 @@ function server() {
         python -m SimpleHTTPServer "$PORT"
     fi
 }
+
+function pipsrc() {
+    case "$1" in
+        aliyun)
+            export PIP_TRUSTED_HOST=mirrors.aliyun.com
+            export PIP_INDEX_URL=http://mirrors.aliyun.com/pypi/simple/
+            echo "using $1 pip source!!";;
+        douban)
+            export PIP_TRUSTED_HOST=pypi.douban.com
+            export PIP_INDEX_URL=http://pypi.douban.com/simple/
+            echo "using $1 pip source!!";;
+        edu)
+            export PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
+            export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple/
+            echo "using $1 pip source!!";;
+        *)
+            echo "unset pip source!!"
+            unset PIP_TRUSTED_HOST
+            unset PIP_INDEX_URL
+    esac
+}

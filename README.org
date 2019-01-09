@@ -1,0 +1,5 @@
+* python
+** using douban pip source
+   #+BEGIN_SRC shell
+     pipsrc douban
+   #+END_SRC
