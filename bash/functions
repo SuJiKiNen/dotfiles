@@ -24,15 +24,15 @@ function server() {
     # port 8000 if no port is given. if the 'o' flag is passed, also
     # open the server in a browser.
     local COMMAND=$1;
-    if [ $COMMAND = "-o" ];
+    if [ "$COMMAND" = "-o" ];
     then
         local PORT=${2:-8000}
         open "http://localhost:${PORT}/"
     else
         PORT=${1:-8000}
     fi
-    pyversion=`python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
-    if [ $pyversion -eq 0 ]; then
+    pyversion=$(python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))')
+    if [ "$pyversion" -eq 0 ]; then
         python3 -m http.server "$PORT"
     else
         python -m SimpleHTTPServer "$PORT"
