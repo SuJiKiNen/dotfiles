@@ -1,5 +1,6 @@
+#!/usr/bin/env bash
 # extended cd funtionality
-cd() {
+function cd() {
     if [[ "$1" == "" ]]; then
       if command -v git >/dev/null 2>&1 && [ -e "$(git rev-parse --show-toplevel 2>/dev/null)" ]; then
         if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" != "$(pwd)" ]]; then
@@ -16,5 +17,24 @@ cd() {
       builtin cd "$(dirname "$1")"; #cd into enclosing directory
     else
       builtin cd "$1"; # normal cd behaviour
+    fi
+}
+
+function server() {
+    # port 8000 if no port is given. if the 'o' flag is passed, also
+    # open the server in a browser.
+    local COMMAND=$1;
+    if [ $COMMAND = "-o" ];
+    then
+        local PORT=${2:-8000}
+        open "http://localhost:${PORT}/"
+    else
+        PORT=${1:-8000}
+    fi
+    pyversion=`python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
+    if [ $pyversion -eq 0 ]; then
+        python3 -m http.server "$PORT"
+    else
+        python -m SimpleHTTPServer "$PORT"
     fi
 }
