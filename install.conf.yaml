@@ -7,6 +7,7 @@
 - clean: ['~']
 
 - link:
+    ~/.bashrc: bash/bashrc
     ~/.bash_aliases: bash/aliases
     ~/.bash_functions: bash/functions
     ~/.bash_profile: bash/profile
