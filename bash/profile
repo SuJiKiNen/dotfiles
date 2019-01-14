@@ -12,3 +12,8 @@ if [[ -e ~/.bash_completions ]]
 then
     source ~/.bash_completions
 fi
+
+if [[ -z "$ZSH_NAME" && -e ~/.fzf.bash ]]
+then
+   source ~/.fzf.bash
+fi
