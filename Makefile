@@ -1,7 +1,7 @@
-.phony: install uninstall
+.phony: install vim
 
 install:
 	./install
 
-uninstall:
-	which python | python uninstall.py
+vim:
+	docker run -it --rm -v "$(shell pwd)/editor/vimrc:/usr/local/share/vim/vimrc" thinca/vim /etc/hosts
