@@ -1,0 +1,6 @@
+if [[ -z "$ZSH_NAME" && -e ~/.fzf.bash ]]
+then
+   bind -r ''  # fzf-file-widget
+   bind '"": transpose-chars'
+   bind -x '"": "fzf-file-widget"'
+fi

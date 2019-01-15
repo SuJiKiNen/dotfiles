@@ -1,3 +1,8 @@
+if [[ -z "$ZSH_NAME" && -e ~/.fzf.bash ]]
+then
+    source ~/.fzf.bash
+fi
+
 if [[ -e ~/.bash_aliases ]]
 then
     source ~/.bash_aliases
@@ -13,7 +18,12 @@ then
     source ~/.bash_completions
 fi
 
-if [[ -z "$ZSH_NAME" && -e ~/.fzf.bash ]]
+if [[ -e ~/.bash_env ]]
 then
-   source ~/.fzf.bash
+    source ~/.bash_env
+fi
+
+if [[ -e ~/.bash_keys ]]
+then
+    source ~/.bash_keys
 fi
