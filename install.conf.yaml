@@ -1,3 +1,5 @@
+- clean: ['~']
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - ["bash -c '[[ -d ~/.fzf ]] || git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf'", Trying cloning fzf]
@@ -8,8 +10,6 @@
       relink: true
       create: true
       force: true
-
-- clean: ['~']
 
 - link:
     ~/.bashrc: bash/bashrc
