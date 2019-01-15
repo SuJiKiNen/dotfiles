@@ -3,4 +3,6 @@ then
    bind -r ''  # fzf-file-widget
    bind '"": transpose-chars'
    bind -x '"": "fzf-file-widget"'
+   bind -r '\ec'
+   bind '"\ec": capitalize-word'
 fi
