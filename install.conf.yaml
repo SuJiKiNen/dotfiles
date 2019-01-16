@@ -33,3 +33,4 @@
 
 - link:
     ~/.vimrc: editor/vim/vimrc
+    ~/.config/nvim/init.vim: editor/nvim/init.vim
