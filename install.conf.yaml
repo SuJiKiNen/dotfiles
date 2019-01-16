@@ -32,4 +32,4 @@
     ~/.jupyter/jupyter_notebook_config.py: lang/python/jupyter_notebook_config.py
 
 - link:
-    ~/.vimrc: editor/vimrc
+    ~/.vimrc: editor/vim/vimrc
