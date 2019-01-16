@@ -18,9 +18,9 @@ then
     source ~/.bash_completions
 fi
 
-if [[ -e ~/.bash_env ]]
+if [[ -e ~/.bash_envs ]]
 then
-    source ~/.bash_env
+    source ~/.bash_envs
 fi
 
 if [[ -e ~/.bash_keys ]]
