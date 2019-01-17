@@ -1,4 +1,4 @@
-if [[ -z "$ZSH_NAME" && -e ~/.fzf.bash ]]
+if [[ -z "$ZSH_VERSION" && -e ~/.fzf.bash ]]
 then
     source ~/.fzf.bash
 fi
