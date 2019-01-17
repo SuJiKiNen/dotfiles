@@ -115,4 +115,5 @@ if [ -f ~/.fzf.zsh ]; then
     bindkey '' transpose-chars
     bindkey '' fzf-file-widget
     bindkey '^[c' capitalize-word
+    bindkey 'd' fzf-cd-widget
 fi

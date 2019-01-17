@@ -5,4 +5,5 @@ then
    bind -x '"": "fzf-file-widget"'
    bind -r '\ec'
    bind '"\ec": capitalize-word'
+   bind '"d":"`__fzf_cd__`"'
 fi
