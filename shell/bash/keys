@@ -1,4 +1,4 @@
-if [[ -z "$ZSH_VERSION" && -e ~/.fzf.bash ]]
+if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]
 then
    bind -r ''  # fzf-file-widget
    bind '"": transpose-chars'
