@@ -12,17 +12,17 @@
       force: true
 
 - link:
-    ~/.bash_aliases: bash/aliases
-    ~/.bash_completions: bash/completions
-    ~/.bash_envs: bash/envs
-    ~/.bash_functions: bash/functions
-    ~/.bash_keys: bash/keys
-    ~/.bash_profile: bash/profile
-    ~/.bashrc: bash/bashrc
+    ~/.bash_aliases: shell/bash/aliases
+    ~/.bash_completions: shell/bash/completions
+    ~/.bash_envs: shell/bash/envs
+    ~/.bash_functions: shell/bash/functions
+    ~/.bash_keys: shell/bash/keys
+    ~/.bash_profile: shell/bash/profile
+    ~/.bashrc: shell/bash/bashrc
 
 - link:
     ~/.oh-my-zsh: submodules/oh-my-zsh
-    ~/.zshrc: oh-my-zsh/oh-my-zshrc
+    ~/.zshrc: shell/oh-my-zsh/oh-my-zshrc
     ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: submodules/zsh-autosuggestions
 
 - link:
