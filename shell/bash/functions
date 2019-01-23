@@ -57,5 +57,11 @@ function pipsrc() {
             echo "unset pip source!!"
             unset PIP_TRUSTED_HOST
             unset PIP_INDEX_URL
+            unset PIPENV_PYPI_MIRROR
     esac
+
+    if [[ -n "$PIP_INDEX_URL"  ]];
+    then
+        export PIPENV_PYPI_MIRROR=$PIP_INDEX_URL
+    fi
 }

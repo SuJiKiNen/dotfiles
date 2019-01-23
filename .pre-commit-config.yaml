@@ -9,6 +9,6 @@ repos:
       files: >
         (?x)^(
         install |
-        bash/functions
+        shell/bash/functions
         )$
       verbose: true
