@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 _pipsrc()
 {
-    COMPREPLY=( $(compgen -W "aliyun douban edu") )
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=( $(compgen -W "aliyun douban edu" -- ${cur}) )
 }
 complete -F _pipsrc pipsrc
 
