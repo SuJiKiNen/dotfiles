@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # extended cd funtionality
 function cd() {
+    local CWD
     if [[ "$1" == "" ]]; then
         if command -v git >/dev/null 2>&1 && [ -e "$(git rev-parse --show-toplevel 2>/dev/null)" ]; then
-            local CWD="$(pwd)"
+            CWD="$(pwd)"
             if [[ "$OSTYPE" == "msys" ]]; then
-                local CWD="$(pwd -W)"
+                CWD="$(pwd -W)"
             fi
             if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" != "${CWD}" ]]; then
                 builtin cd "$(git rev-parse --show-toplevel 2>/dev/null)"; #toplevel of git repository
