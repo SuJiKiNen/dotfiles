@@ -8,3 +8,6 @@ autocmd!
 autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
 autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif
 augroup END
+
+"disable beep and flash see http://vim.wikia.com/wiki/Disable_beeping"
+set noeb vb t_vb=
