@@ -44,7 +44,7 @@ import socketserver
 
 Handler = http.server.SimpleHTTPRequestHandler
 Handler.extensions_map = {
-    '': 'text/plain',
+    '': 'text/plain; charset=utf-8',
 }
 httpd = socketserver.TCPServer(('', int('${PORT}')), Handler)
 print('Serving HTTP on 0.0.0.0 port ${PORT} ...')
