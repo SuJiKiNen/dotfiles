@@ -36,13 +36,15 @@ function server() {
     else
         PORT=${1:-8000}
     fi
-    pyversion=$(python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))')
-    if [ "$pyversion" -eq 0 ]; then
-        python -c "
-import http.server
-import socketserver
+    python -c "
+try:
+    import http.server as httpserver  # py3
+    import socketserver
+except ImportError:
+    import SimpleHTTPServer as httpserver
+    import SocketServer as socketserver
 
-Handler = http.server.SimpleHTTPRequestHandler
+Handler = httpserver.SimpleHTTPRequestHandler
 Handler.extensions_map = {
     '': 'text/plain; charset=utf-8',
 }
@@ -50,12 +52,6 @@ httpd = socketserver.TCPServer(('', int('${PORT}')), Handler)
 print('Serving HTTP on 0.0.0.0 port ${PORT} ...')
 httpd.serve_forever()
 "
-    else
-        python -c '
-import SimpleHTTPServer
-SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map[""] = "text/plain"
-SimpleHTTPServer.test()' "$PORT"
-    fi
 }
 
 function pipsrc() {
