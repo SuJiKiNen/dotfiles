@@ -36,7 +36,14 @@ function server() {
     else
         PORT=${1:-8000}
     fi
-    python -c "
+
+    local PY=python
+    if command -v ipython >/dev/null 2>&1; then
+        PY=ipython
+    fi
+
+    ${PY} -c "
+
 try:
     import http.server as httpserver  # py3
     import socketserver
