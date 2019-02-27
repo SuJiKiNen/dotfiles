@@ -33,3 +33,8 @@ if command -v pyenv 1>/dev/null 2>&1;
 then
     eval "$(pyenv init -)"
 fi
+
+# force utf-8
+if [[ "$OSTYPE" == "msys" ]]; then
+   chcp.com 65001 > /dev/null 2>&1
+fi
