@@ -30,6 +30,7 @@
     ~/.isort.cfg: lang/python/isort.cfg
     ~/.ipython/profile_default/ipython_config.py: lang/python/ipython_config.py
     ~/.jupyter/jupyter_notebook_config.py: lang/python/jupyter_notebook_config.py
+    ~/.pyenv: submodules/pyenv
 
 - link:
     ~/.vimrc: editor/vim/vimrc
