@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+export HISTCONTROL="ignoredups:ignorespace"
+
 if command -v emacs >/dev/null 2>&1; then
     export EDITOR="$(which emacs) -nw -Q"
 elif command -v nvim >/dev/null 2>&1; then
