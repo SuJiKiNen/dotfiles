@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148
 
 if [[ -e ~/.bash_aliases ]]
 then
@@ -23,3 +24,7 @@ if [[ -e ~/.bash_keys ]]
 then
     source ~/.bash_keys
 fi
+
+# Local Variables:
+# mode: shell-script
+# End:

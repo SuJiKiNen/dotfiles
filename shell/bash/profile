@@ -1,10 +1,14 @@
+# shellcheck disable=SC2148
+
 if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+    # shellcheck disable=SC1090
+    source ~/.bashrc
 fi
 
 if [[ -z "$ZSH_VERSION" && -e ~/.fzf.bash ]]
 then
     if [[ "$OSTYPE" != "msys" ]]; then
+        # shellcheck disable=SC1090
         source ~/.fzf.bash
     fi
 fi
