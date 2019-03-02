@@ -4,7 +4,9 @@ fi
 
 if [[ -z "$ZSH_VERSION" && -e ~/.fzf.bash ]]
 then
-    source ~/.fzf.bash
+    if [[ "$OSTYPE" != "msys" ]]; then
+        source ~/.fzf.bash
+    fi
 fi
 
 # init pyenv
@@ -17,3 +19,7 @@ fi
 if [[ "$OSTYPE" == "msys" ]]; then
    chcp.com 65001 > /dev/null 2>&1
 fi
+
+# Local Variables:
+# mode: shell-script
+# End:
