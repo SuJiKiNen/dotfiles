@@ -1,31 +1,10 @@
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
 if [[ -z "$ZSH_VERSION" && -e ~/.fzf.bash ]]
 then
     source ~/.fzf.bash
-fi
-
-if [[ -e ~/.bash_aliases ]]
-then
-    source ~/.bash_aliases
-fi
-
-if [[ -e ~/.bash_functions ]]
-then
-    source ~/.bash_functions
-fi
-
-if [[ -e ~/.bash_completions ]]
-then
-    source ~/.bash_completions
-fi
-
-if [[ -e ~/.bash_envs ]]
-then
-    source ~/.bash_envs
-fi
-
-if [[ -e ~/.bash_keys ]]
-then
-    source ~/.bash_keys
 fi
 
 # init pyenv
