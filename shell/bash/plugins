@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+ # init fzf
+ if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]
+ then
+     if [[ "$OSTYPE" != "msys" ]]; then
+         # shellcheck disable=SC1090
+         source ~/.fzf.bash
+     fi
+     bind -r ''  # fzf-file-widget
+     bind '"": transpose-chars'
+     bind -x '"": "fzf-file-widget"'
+     bind -r '\ec'
+     bind '"\ec": capitalize-word'
+     bind '"d":"`__fzf_cd__`"'
+ fi
+
+ # init pyenv
+ export PYENV_ROOT="$HOME/.pyenv"
+ export PATH="$PYENV_ROOT/bin:$PATH"
+ if command -v pyenv 1>/dev/null 2>&1;
+ then
+     eval "$(pyenv init -)"
+ fi

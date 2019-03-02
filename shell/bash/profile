@@ -1,22 +1,12 @@
 # shellcheck disable=SC2148
+# shellcheck disable=SC1090
 
 if [ -f ~/.bashrc ]; then
-    # shellcheck disable=SC1090
     source ~/.bashrc
 fi
 
-if [[ -z "$ZSH_VERSION" && -e ~/.fzf.bash ]]
-then
-    if [[ "$OSTYPE" != "msys" ]]; then
-        # shellcheck disable=SC1090
-        source ~/.fzf.bash
-    fi
-fi
-
-# init pyenv
-if command -v pyenv 1>/dev/null 2>&1;
-then
-    eval "$(pyenv init -)"
+if [ -f ~/.bash_plugins ]; then
+    source ~/.bash_plugins
 fi
 
 # force utf-8

@@ -13,6 +13,3 @@ elif command -v nano >/dev/null 2>&1; then
 else
     echo "No reasonable text editor is installed on this system! EDITOR will not be explicitly set!"
 fi
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"

@@ -19,6 +19,7 @@
     ~/.bash_keys: shell/bash/keys
     ~/.bash_profile: shell/bash/profile
     ~/.bashrc: shell/bash/bashrc
+    ~/.bash_plugins: shell/bash/plugins
 
 - link:
     ~/.oh-my-zsh: submodules/oh-my-zsh
