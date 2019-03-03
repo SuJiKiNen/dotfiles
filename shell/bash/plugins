@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # init fzf
-if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]
-then
+if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]; then
     if [[ "$OSTYPE" != "msys" ]]; then
         # shellcheck disable=SC1090
         source ~/.fzf.bash
@@ -25,8 +24,7 @@ if [[ "$OSTYPE" != "msys" && -d "$HOME/.pyenv" ]]; then
 fi
 
 # pipenv
-if command -v pyenv 1>/dev/null 2>&1;
-then
+if command -v pyenv 1>/dev/null 2>&1; then
     _pipenv_completion() {
         local IFS=$'\t'
         COMPREPLY=( $( env COMP_WORDS="${COMP_WORDS[*]}" \

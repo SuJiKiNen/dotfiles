@@ -1,27 +1,22 @@
 # shellcheck disable=SC2148
 
-if [[ -e ~/.bash_aliases ]]
-then
+if [[ -e ~/.bash_aliases ]]; then
     source ~/.bash_aliases
 fi
 
-if [[ -e ~/.bash_functions ]]
-then
+if [[ -e ~/.bash_functions ]]; then
     source ~/.bash_functions
 fi
 
-if [[ -e ~/.bash_completions ]]
-then
+if [[ -e ~/.bash_completions ]]; then
     source ~/.bash_completions
 fi
 
-if [[ -e ~/.bash_envs ]]
-then
+if [[ -e ~/.bash_envs ]]; then
     source ~/.bash_envs
 fi
 
-if [[ -e ~/.bash_keys ]]
-then
+if [[ -e ~/.bash_keys ]]; then
     source ~/.bash_keys
 fi
 

@@ -29,8 +29,7 @@ function server() {
     # port 8000 if no port is given. if the 'o' flag is passed, also
     # open the server in a browser.
     local COMMAND=$1;
-    if [ "$COMMAND" = "-o" ];
-    then
+    if [ "$COMMAND" = "-o" ]; then
         local PORT=${2:-8000}
         open "http://localhost:${PORT}/"
     else
@@ -83,8 +82,7 @@ function pipsrc() {
             unset PIPENV_PYPI_MIRROR
     esac
 
-    if [[ -n "$PIP_INDEX_URL"  ]];
-    then
+    if [[ -n "$PIP_INDEX_URL"  ]]; then
         export PIPENV_PYPI_MIRROR=$PIP_INDEX_URL
     fi
 }
