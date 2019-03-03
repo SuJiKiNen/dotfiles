@@ -25,6 +25,10 @@ then
     source ~/.bash_keys
 fi
 
+if [ -f ~/.bash_plugins ]; then
+    source ~/.bash_plugins
+fi
+
 # Local Variables:
 # mode: shell-script
 # End:

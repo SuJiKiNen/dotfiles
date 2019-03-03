@@ -5,9 +5,6 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-if [ -f ~/.bash_plugins ]; then
-    source ~/.bash_plugins
-fi
 
 # force utf-8
 if [[ "$OSTYPE" == "msys" ]]; then
