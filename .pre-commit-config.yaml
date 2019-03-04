@@ -10,6 +10,7 @@ repos:
         (?x)^(
         install |
         shell/bash/functions |
-        shell/bash/profile
+        shell/bash/profile |
+        shell/bash/readline
         )$
       verbose: true

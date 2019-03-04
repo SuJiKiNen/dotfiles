@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# stolen from https://github.com/shanesmith/dotfiles/blob/master/bash_readline
+
+# insert something before cursor
+__readline_insert() {
+    READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$1${READLINE_LINE:$READLINE_POINT}"
+    READLINE_POINT=$(( READLINE_POINT + ${#1} ))
+}
+
+__readline_replace() {
+    READLINE_LINE="$1"
+    READLINE_POINT="${#1}"
+}
+
+__escape() {
+    while read -r item; do
+        printf '%q ' "$item"
+    done
+}
+
+_fzf_git_reflog() {
+    local sha
+    sha="$(git reflog --color | fzf --ansi --no-sort | awk '{print $1}' | __escape)"
+    __readline_insert "$sha"
+}
+
+_fzf_pipenv_env() {
+    local env_name
+    env_name="$(pipenv --envs | tr -d ' ' | grep ^- | tr -d '-' | fzf -m)"
+    __readline_insert "$env_name"
+}
+
+fzf-command() {
+    local cmds
+    IFS='' read -r -d '' cmds <<"EOF"
+git_reflog
+pipenv_env
+EOF
+    local cmd
+    cmd=$(echo "$cmds" | fzf +m)
+    eval _fzf_"${cmd}"
+}
+
+if command -v fzf >/dev/null 2>&1; then
+    bind -x '"x": fzf-command'
+fi
+
+# Local Variables:
+# mode: shell-script
+# End:
