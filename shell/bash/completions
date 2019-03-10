@@ -2,9 +2,13 @@
 _pipsrc()
 {
     local cur="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=( $(compgen -W "aliyun douban edu" -- ${cur}) )
+    if [[ $COMP_CWORD == 1 ]]; then
+        COMPREPLY=( $(compgen -W "aliyun douban edu" -- "${cur}") )
+    else
+        COMPREPLY=()
+    fi
 }
-complete -F _pipsrc pipsrc
+complete -o "nospace" -F _pipsrc pipsrc
 
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
