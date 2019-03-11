@@ -18,6 +18,12 @@ __escape() {
     done
 }
 
+_fzf_git_log() {
+    local sha
+    sha="$(git log --color --oneline | fzf --ansi --no-sort | awk '{print $1}' | __escape)"
+    __readline_insert "$sha"
+}
+
 _fzf_git_reflog() {
     local sha
     sha="$(git reflog --color | fzf --ansi --no-sort | awk '{print $1}' | __escape)"
@@ -33,11 +39,14 @@ _fzf_pipenv_env() {
 fzf-command() {
     local cmds
     IFS='' read -r -d '' cmds <<"EOF"
+git_log
 git_reflog
 pipenv_env
 EOF
-    local cmd
     cmd=$(echo "$cmds" | fzf +m)
+    if [[ -z $cmd ]]; then
+        return 0
+    fi
     eval _fzf_"${cmd}"
 }
 
