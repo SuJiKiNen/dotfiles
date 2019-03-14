@@ -30,6 +30,12 @@ _fzf_git_reflog() {
     __readline_insert "$sha"
 }
 
+_fzf_git_status() {
+    local file
+    file="$(git status --short | fzf -m | awk '{print $2}' | __escape)"
+    __readline_insert "$file"
+}
+
 _fzf_pipenv_env() {
     local env_name
     env_name="$(pipenv --envs | tr -d ' ' | grep ^- | tr -d '-' | fzf -m)"
@@ -41,8 +47,10 @@ fzf-command() {
     IFS='' read -r -d '' cmds <<"EOF"
 git_log
 git_reflog
+git_status
 pipenv_env
 EOF
+    local cmd
     cmd=$(echo "$cmds" | fzf +m)
     if [[ -z $cmd ]]; then
         return 0
@@ -50,8 +58,11 @@ EOF
     eval _fzf_"${cmd}"
 }
 
-if command -v fzf >/dev/null 2>&1; then
-    bind -x '"x": fzf-command'
+
+if [[ -n "$BASH_VERSION" ]]; then
+    if command -v fzf >/dev/null 2>&1; then
+        bind -x '"x": fzf-command'
+    fi
 fi
 
 # Local Variables:
