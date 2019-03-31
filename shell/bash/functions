@@ -86,3 +86,15 @@ function pipsrc() {
         export PIPENV_PYPI_MIRROR=$PIP_INDEX_URL
     fi
 }
+
+function hex() {
+    local input
+    input="$1"
+    if [[ -f "$input" ]]; then
+        echo "Hex value of file: $input"
+        od -A n -t x1 "$input"
+    else
+        echo "Hex value of String: $input"
+        echo -n "$input" | od -A n -t x1
+    fi
+}
