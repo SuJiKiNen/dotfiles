@@ -27,6 +27,7 @@
     ~/.oh-my-zsh: submodules/oh-my-zsh
     ~/.zshrc: shell/oh-my-zsh/oh-my-zshrc
     ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: submodules/zsh-autosuggestions
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting: submodules/zsh-syntax-highlighting
 
 - link:
     ~/.flake8: lang/python/flake8
