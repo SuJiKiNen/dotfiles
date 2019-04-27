@@ -41,3 +41,7 @@
 - link:
     ~/.vimrc: editor/vim/vimrc
     ${XDG_CONFIG_HOME}/nvim/init.vim: editor/nvim/init.vim
+
+- link:
+    ~/.emacs: editor/emacs/.emacs
+    ${XDG_CONFIG_HOME}/emacs/vanilla/.emacs.d: ./editor/emacs/vanilla/.emacs.d
