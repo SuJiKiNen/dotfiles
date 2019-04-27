@@ -30,7 +30,8 @@
     ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting: submodules/zsh-syntax-highlighting
 
 - link:
-    ~/.inputrc: interactive/inputrc
+    ${XDG_CONFIG_HOME}/readline/inputrc: ./shell/readline/inputrc
+
 - link:
     ~/.flake8: lang/python/flake8
     ~/.isort.cfg: lang/python/isort.cfg

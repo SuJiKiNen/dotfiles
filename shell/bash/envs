@@ -15,3 +15,6 @@ else
 fi
 
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=${HOME}/.config}
+
+# Set path for inputrc configuration
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
