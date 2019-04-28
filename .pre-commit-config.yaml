@@ -1,11 +1,10 @@
 repos:
 - repo: local
   hooks:
-    - id: bash
+    - id: shellcheck
       name: Test bash source with shellcheck
-      entry: shellcheck
-      language: system
-      types: [text]
+      entry: koalaman/shellcheck:latest
+      language: docker_image
       files: >
         (?x)^(
         install |
