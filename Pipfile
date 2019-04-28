@@ -5,6 +5,8 @@ verify_ssl = true
 
 [dev-packages]
 pre-commit = {index = "http://pypi.douban.com/simple/",version = "*"}
+pytest = {index = "http://pypi.douban.com/simple/",version = "*"}
+pexpect = {index = "http://pypi.douban.com/simple/",version = "*"}
 
 [packages]
 
