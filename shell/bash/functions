@@ -102,3 +102,9 @@ function hex() {
         echo -n "$input" | od -A n -t x1
     fi
 }
+
+function pip() {
+    # https://stackoverflow.com/questions/25399079/how-to-overwrite-a-bash-command
+    command pip --version
+    command pip "$@"
+}
