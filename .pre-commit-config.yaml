@@ -11,6 +11,7 @@ repos:
         shell/bash/functions |
         shell/bash/profile |
         shell/bash/readline |
+        shell/bash/plugins |
         shell/bash/envs
         )$
       verbose: true

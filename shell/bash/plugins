@@ -11,7 +11,8 @@ if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]; then
     bind -x '"": "fzf-file-widget"'
     bind -r '\ec'
     bind '"\ec": capitalize-word'
-    bind '"d":"`__fzf_cd__`"'
+    # shellcheck disable=SC2016
+    bind '"d":"$(__fzf_cd__)"'
 fi
 
 # init pyenv
@@ -27,6 +28,7 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
     _pipenv_completion() {
         local IFS=$'\t'
+        # shellcheck disable=SC2207
         COMPREPLY=( $( env COMP_WORDS="${COMP_WORDS[*]}" \
                            COMP_CWORD="$COMP_CWORD" \
                            _PIPENV_COMPLETE=complete-bash "$1" ) )
@@ -41,7 +43,8 @@ function _setup_bash_pinyin_abbrev_completion() {
     export PATH="$PY_COMP_ROOT/bin:$PATH"
     local comp_file
     comp_file="$PY_COMP_ROOT/shell/completion.bash"
-    source $comp_file
+    # shellcheck source=/dev/null
+    source "$comp_file"
 }
 
 if [[ -d "$HOME/.bash-pinyin-abbrev-completion" ]]; then
