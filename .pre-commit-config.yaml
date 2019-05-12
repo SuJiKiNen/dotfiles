@@ -10,6 +10,7 @@ repos:
         install |
         shell/bash/functions |
         shell/bash/profile |
-        shell/bash/readline
+        shell/bash/readline |
+        shell/bash/envs
         )$
       verbose: true

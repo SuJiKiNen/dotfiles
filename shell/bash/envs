@@ -3,16 +3,17 @@
 export HISTCONTROL="ignoredups:ignorespace"
 
 if command -v emacs >/dev/null 2>&1; then
-    export EDITOR="$(which emacs) -nw -Q"
+    EDITOR="$(command -v emacs) -nw -Q"
 elif command -v nvim >/dev/null 2>&1; then
-    export EDITOR="$(which nvim)"
+    EDITOR="$(command -v nvim)"
 elif command -v vim >/dev/null 2>&1; then
-    export EDITOR="$(which vim)"
+    EDITOR="$(command -v vim)"
 elif command -v nano >/dev/null 2>&1; then
-    export EDITOR="$(which nano)"
+    EDITOR="$(command -v nano)"
 else
     echo "No reasonable text editor is installed on this system! EDITOR will not be explicitly set!"
 fi
+export EDITOR
 
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=${HOME}/.config}
 
