@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # extended cd funtionality
-function cd() {
+function cd {
     local CWD
     if [[ "$1" == "" ]]; then
         if command -v git >/dev/null 2>&1 && [ -e "$(git rev-parse --show-toplevel 2>/dev/null)" ]; then
@@ -9,23 +9,23 @@ function cd() {
                 CWD="$(pwd -W)"
             fi
             if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" != "${CWD}" ]]; then
-                builtin cd "$(git rev-parse --show-toplevel 2>/dev/null)" || exit ; #toplevel of git repository
+                builtin cd "$(git rev-parse --show-toplevel 2>/dev/null)" || return #toplevel of git repository
             elif [ -e "$(builtin cd ..; git rev-parse --show-toplevel 2>/dev/null)" ]; then
-                builtin cd "$(builtin cd ..; git rev-parse --show-toplevel 2>/dev/null)" || exit; #toplevel of parent git repository
+                builtin cd "$(builtin cd ..; git rev-parse --show-toplevel 2>/dev/null)" || return #toplevel of parent git repository
             else
-                builtin cd || exit; # normal cd behaviour
+                builtin cd || return # normal cd behaviour
             fi
         else
-            builtin cd || exit; # normal cd behaviour
+            builtin cd || return # normal cd behaviour
         fi
     elif [[ -f "$1" ]]; then # is it a file?
-        builtin cd "$(dirname "$1")" || exit; #cd into enclosing directory
+        builtin cd "$(dirname "$1")" || return #cd into enclosing directory
     else
-        builtin cd "$1" || exit; # normal cd behaviour
+        builtin cd "$1" || return # normal cd behaviour
     fi
 }
 
-function server() {
+function server {
     # port 8000 if no port is given. if the 'o' flag is passed, also
     # open the server in a browser.
     local COMMAND=$1;
@@ -65,7 +65,7 @@ finally:
 "
 }
 
-function pipsrc() {
+function pipsrc {
     case "$1" in
         aliyun)
             export PIP_TRUSTED_HOST=mirrors.aliyun.com
@@ -91,7 +91,7 @@ function pipsrc() {
     fi
 }
 
-function hex() {
+function hex {
     local input
     input="$1"
     if [[ -f "$input" ]]; then
@@ -103,7 +103,7 @@ function hex() {
     fi
 }
 
-function pip() {
+function pip {
     # https://stackoverflow.com/questions/25399079/how-to-overwrite-a-bash-command
     command pip --version
     command pip "$@"

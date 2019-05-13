@@ -15,3 +15,9 @@ repos:
         shell/bash/envs
         )$
       verbose: true
+
+- repo: https://github.com/openstack/bashate
+  rev: 0.6.0
+  hooks:
+    - id: bashate
+      args: ["-i", "E006,E010"]
