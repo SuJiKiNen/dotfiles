@@ -50,3 +50,13 @@ function _setup_bash_pinyin_abbrev_completion() {
 if [[ -d "$HOME/.bash-pinyin-abbrev-completion" ]]; then
     _setup_bash_pinyin_abbrev_completion
 fi
+
+
+# nvm
+export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+if [[ -n "$BASH_VERSION" && -d "$NVM_DIR" ]]; then
+    # shellcheck source=/dev/null
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    # shellcheck source=/dev/null
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
