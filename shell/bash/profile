@@ -9,6 +9,7 @@ fi
 # force utf-8
 if [[ "$OSTYPE" == "msys" ]]; then
    chcp.com 65001 > /dev/null 2>&1
+   export PYTHONIOENCODING=utf-8
 fi
 
 # Local Variables:
