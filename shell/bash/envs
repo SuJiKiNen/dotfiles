@@ -16,9 +16,10 @@ fi
 export EDITOR
 
 # http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=${HOME}/.config}
-export XDG_CACHE_HOME=${XDG_CONFIG_HOME:=${HOME}/.cache}
-export XDG_DATA_HOME=${XDG_CONFIG_HOME:=${HOME}/.local/share}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=${HOME%%/}${HOME:+/}.config}
+export XDG_CACHE_HOME=${XDG_CONFIG_HOME:=${HOME%%/}${HOME:+/}.cache}
+export XDG_DATA_HOME=${XDG_CONFIG_HOME:=${HOME%%/}${HOME:+/}.local/share}
 
 # Set path for inputrc configuration
-export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export INPUTRC="${XDG_CONFIG_HOME%%/}${XDG_CONFIG_HOME:+/}readline/inputrc"
+#---------------|------remove /------|-if not empty add /|----------------|
