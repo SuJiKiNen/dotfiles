@@ -42,6 +42,7 @@ function server {
     fi
 
     ${PY} -c "
+import os
 try:
     import http.server as httpserver  # py3
     import socketserver
@@ -55,7 +56,8 @@ m[''] = 'text/plain'
 for k in m.keys():
     m[k] = m[k] + '; charset=UTF-8'
 httpd = socketserver.TCPServer(('', int('${PORT}')), Handler)
-print('Serving HTTP on 0.0.0.0 port ${PORT} ...')
+pid = os.getpid()
+print('Serving HTTP[pid: {}] on 0.0.0.0 port ${PORT} ...'.format(pid))
 try:
     httpd.serve_forever()
 except KeyboardInterrupt:
