@@ -14,6 +14,7 @@
 - link:
     ~/.bash_aliases: shell/bash/aliases
     ~/.bash_completions: shell/bash/completions
+    ~/.bash_colors: shell/bash/colors
     ~/.bash_envs: shell/bash/envs
     ~/.bash_functions: shell/bash/functions
     ~/.bash_keys: shell/bash/keys

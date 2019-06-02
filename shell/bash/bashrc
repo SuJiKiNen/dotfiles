@@ -1,5 +1,9 @@
 # shellcheck disable=SC2148
 
+if [[ -e ~/.bash_colors ]]; then
+    source ~/.bash_colors
+fi
+
 if [[ -e ~/.bash_envs ]]; then
     source ~/.bash_envs
 fi
