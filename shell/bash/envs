@@ -55,8 +55,8 @@ if [[ -n "$BASH_VERSION" ]]; then
     # shellcheck disable=SC2154
     if [[ $OSTYPE == "msys" ]]; then
         # \012 is \n
-        export PS1="\$(_virtualenv_prompt)${green}\u@\h ${bold_yellow}\w ${bold_orange}\$(__git_ps1)${normal}\012$ "
+        export PS1="\$(_virtualenv_prompt)${bold_green}\u@\h ${bold_yellow}\w ${bold_orange}\$(__git_ps1)${normal}\012$ "
     else
-        export PS1="\$(_virtualenv_prompt)${green}\u@\h ${bold_yellow}\w ${normal}\012$ "
+        export PS1="\$(_virtualenv_prompt)${bold_green}\u@\h ${bold_yellow}\w ${normal}\012$ "
     fi
 fi
