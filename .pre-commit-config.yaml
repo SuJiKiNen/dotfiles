@@ -21,3 +21,7 @@ repos:
   hooks:
     - id: bashate
       args: ["-i", "E006,E010"]
+      exclude: >
+        (?x)(
+        shell/bash/prompt/git-prompt.sh
+        )$
