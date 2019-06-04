@@ -48,10 +48,31 @@ function _virtualenv_prompt(){
     fi
 }
 
+function _get_local_ip() {
+    command -v python > /dev/null 2>&1 || return
+    # https://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib
+    printf "%s" "$(python -c "
+import socket
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except:
+        IP = ''
+    finally:
+        s.close()
+    return IP
+print(get_ip())
+")"
+}
+local_ip=$(_get_local_ip)
+
 if [[ -n "$BASH_VERSION" ]]; then
     # disable the default virtualenv prompt change
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     # \012 is \n
     # shellcheck disable=SC2154
-    export PS1="\$(_virtualenv_prompt)${bold_green}\u@\h ${bold_yellow}\w ${bold_orange}\$(__git_ps1)${normal}\012$ "
+    export PS1="\$(_virtualenv_prompt)${bold_green}\u@${local_ip:-\h} ${bold_yellow}\w ${bold_orange}\$(__git_ps1)${normal}\012$ "
 fi
