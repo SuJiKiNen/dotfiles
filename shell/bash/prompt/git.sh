@@ -533,3 +533,12 @@ __git_ps1 ()
 
 	return $exit
 }
+
+function _git_prompt() {
+    local _git=$(__git_ps1)
+    if [[ -n "${_git}" ]]; then
+        local prefix="$1"
+        local suffix="$2"
+        printf "%s" "${prefix}${_git}${suffix}"
+    fi
+}

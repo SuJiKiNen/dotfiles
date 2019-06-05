@@ -4,6 +4,12 @@ if [[ -e ~/.bash_colors ]]; then
     source ~/.bash_colors
 fi
 
+if [[ -d ~/.bash/prompt ]]; then
+    for file in ~/.bash/prompt/*; do
+        source $file
+    done
+fi
+
 if [[ -e ~/.bash_envs ]]; then
     source ~/.bash_envs
 fi
@@ -32,11 +38,6 @@ if [[ -e ~/.bash_readline ]]; then
     source ~/.bash_readline
 fi
 
-if [[ -d ~/.bash/prompt ]]; then
-    for file in ~/.bash/prompt/*; do
-        source $file
-    done
-fi
 # Local Variables:
 # mode: shell-script
 # End:
