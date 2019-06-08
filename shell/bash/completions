@@ -2,7 +2,7 @@
 _pipsrc()
 {
     local cur="${COMP_WORDS[COMP_CWORD]}"
-    if [[ $COMP_CWORD == 1 ]]; then
+    if [[ $COMP_CWORD -eq 1 ]]; then
         COMPREPLY=( $(compgen -W "aliyun douban edu" -- "${cur}") )
     else
         COMPREPLY=()
