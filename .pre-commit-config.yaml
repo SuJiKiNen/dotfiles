@@ -25,3 +25,13 @@ repos:
         (?x)(
         shell/bash/prompt/git-prompt.sh
         )$
+
+
+- repo: local
+  hooks:
+    - id: dockerignore
+      name: dockerignore
+      description: generate .dockerignore file from .gitignore.
+      entry: python generate_dockerignore.py
+      language: system
+      pass_filenames: false
