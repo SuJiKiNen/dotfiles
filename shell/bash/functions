@@ -1,28 +1,26 @@
 #!/usr/bin/env bash
 # extended cd funtionality
 function cd {
-    local CWD
-    if [[ "$1" == "" ]]; then
-        if command -v git >/dev/null 2>&1 && [ -e "$(git rev-parse --show-toplevel 2>/dev/null)" ]; then
-            CWD="$(pwd)"
-            if [[ "$OSTYPE" == "msys" ]]; then
-                CWD="$(pwd -W)"
-            fi
-            if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" != "${CWD}" ]]; then
-                builtin cd "$(git rev-parse --show-toplevel 2>/dev/null)" || return #toplevel of git repository
-            elif [ -e "$(builtin cd ..; git rev-parse --show-toplevel 2>/dev/null)" ]; then
-                builtin cd "$(builtin cd ..; git rev-parse --show-toplevel 2>/dev/null)" || return #toplevel of parent git repository
-            else
-                builtin cd || return # normal cd behaviour
-            fi
-        else
-            builtin cd || return # normal cd behaviour
+    local CWD GIT_ROOT PARENT_GIT_ROOT
+    if [ -z "$1" ] && command -v git >/dev/null 2>&1; then
+        CWD="$(pwd)"
+        if [ "$OSTYPE" = "msys" ]; then
+            CWD="$(pwd -W)"
         fi
-    elif [[ -f "$1" ]]; then # is it a file?
-        builtin cd "$(dirname "$1")" || return #cd into enclosing directory
-    else
-        builtin cd "$1" || return # normal cd behaviour
+        GIT_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+        if [ -e "${GIT_ROOT}" ]; then
+            if [ "${GIT_ROOT}" != "${CWD}" ]; then
+                builtin cd "${GIT_ROOT}" && return # toplevel of git repository
+            fi
+            PARENT_GIT_ROOT="$(builtin cd .. || exit; git rev-parse --show-toplevel 2>/dev/null)"
+            if [ -e "${PARENT_GIT_ROOT}" ]; then
+                builtin cd "${PARENT_GIT_ROOT}" && return # toplevel of parent git repository
+            fi
+        fi
+    elif [ -f "$1" ]; then # is it a file?
+        builtin cd "$(dirname "$1")" && return # cd into enclosing directory
     fi
+    builtin cd "$@" && return # normal cd behaviour
 }
 
 function server {
