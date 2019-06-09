@@ -18,6 +18,7 @@
     ~/.bash_envs: shell/bash/envs
     ~/.bash_functions: shell/bash/functions
     ~/.bash_keys: shell/bash/keys
+    ~/.bash_opts: shell/bash/opts
     ~/.bash_profile: shell/bash/profile
     ~/.bashrc: shell/bash/bashrc
     ~/.bash_plugins: shell/bash/plugins

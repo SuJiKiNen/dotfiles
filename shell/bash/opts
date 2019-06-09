@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# alternative set BASHOPTS environment variable
+[[ -z "$BASH_VERSION" ]] && return
+shopt -s autocd         # cd command if it is a directory
+shopt -s cdspell        # try to correct typos in path
+shopt -s dotglob        # include dotfiles in path expansion
+shopt -s hostcomplete   # try to autocomplete hostnames
+shopt -s nullglob       # filename patterns which match no files to expand to a null string eg. * -> empty
