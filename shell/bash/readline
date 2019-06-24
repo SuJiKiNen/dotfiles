@@ -42,6 +42,18 @@ _fzf_pipenv_env() {
     __readline_insert "$env_name"
 }
 
+_fzf_docker_ps() {
+    local container_id
+    container_id="$(docker ps --format '{{ .ID}} {{ .Image}}' | fzf --ansi --no-sort -m | awk '{print $1}' | __escape)"
+    __readline_insert "$container_id"
+}
+
+_fzf_docker_ps_a() {
+    local container_id
+    container_id="$(docker ps -a --format '{{ .ID}} {{ .Image}}' | fzf --ansi --no-sort -m | awk '{print $1}' | __escape)"
+    __readline_insert "$container_id"
+}
+
 fzf-command() {
     local cmds
     IFS='' read -r -d '' cmds <<"EOF"
@@ -49,6 +61,8 @@ git_log
 git_reflog
 git_status
 pipenv_env
+docker_ps
+docker_ps_a
 EOF
     local cmd
     cmd=$(echo "$cmds" | fzf +m)

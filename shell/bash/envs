@@ -7,19 +7,6 @@ if [[ -n "$BASH_VERSION" ]]; then
     set -o emacs
 fi
 
-if command -v emacs >/dev/null 2>&1; then
-    EDITOR="$(command -v emacs) -nw -Q"
-elif command -v nvim >/dev/null 2>&1; then
-    EDITOR="$(command -v nvim)"
-elif command -v vim >/dev/null 2>&1; then
-    EDITOR="$(command -v vim)"
-elif command -v nano >/dev/null 2>&1; then
-    EDITOR="$(command -v nano)"
-else
-    echo "No reasonable text editor is installed on this system! EDITOR will not be explicitly set!"
-fi
-export EDITOR
-
 # http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=${HOME%%/}${HOME:+/}.config}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:=${HOME%%/}${HOME:+/}.cache}
@@ -35,6 +22,19 @@ else
     HOSTS="/etc/hosts"
 fi
 export HOSTS
+
+if command -v emacs >/dev/null 2>&1; then
+    EDITOR="env EMACS_USER_DIRECTORY=${XDG_CONFIG_HOME}/emacs/vanilla/.emacs.d $(command -v emacs) -nw"
+elif command -v nvim >/dev/null 2>&1; then
+    EDITOR="$(command -v nvim)"
+elif command -v vim >/dev/null 2>&1; then
+    EDITOR="$(command -v vim)"
+elif command -v nano >/dev/null 2>&1; then
+    EDITOR="$(command -v nano)"
+else
+    echo "No reasonable text editor is installed on this system! EDITOR will not be explicitly set!"
+fi
+export EDITOR
 
 if [[ -n "$BASH_VERSION" ]]; then
     # disable the default virtualenv prompt change
