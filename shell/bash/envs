@@ -45,8 +45,9 @@ if [[ -n "$BASH_VERSION" ]]; then
         test -n "${_virtualenv}" || return
         local _python_version
         _python_version=$(_python_version_prompt "py:")
+        printf "%b" '\012'
         printf "%s" "(${_python_version} ${_virtualenv})"
-        printf "%b" "\n\r"
+        printf "%b" '\012\007'
     }
     _ip=$(_local_ip_prompt)
     _ip="${_ip:-\h}"
