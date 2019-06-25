@@ -51,6 +51,6 @@ if [[ -n "$BASH_VERSION" ]]; then
     _ip=$(_local_ip_prompt)
     _ip="${_ip:-\h}"
     # shellcheck disable=SC2154
-    export PS1="\$(_prog_lang_prompt)${bold_green}\u@${_ip} ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\\n\\\$ "
+    export PS1="\$(_prog_lang_prompt)${bold_green}\u@${_ip} ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\012\\\$ "
     unset _ip
 fi
