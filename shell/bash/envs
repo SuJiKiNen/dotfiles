@@ -49,9 +49,8 @@ if [[ -n "$BASH_VERSION" ]]; then
         printf "%s" "(${_python_version} ${_virtualenv})"
         printf "%b" '\012\007'
     }
-    _ip=$(_local_ip_prompt)
-    _ip="${_ip:-\h}"
+    _ip=$(_local_ip_prompt "" " ")
     # shellcheck disable=SC2154
-    export PS1="\$(_prog_lang_prompt)${bold_green}\u@${_ip} ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\012\\\$ "
+    export PS1="\$(_prog_lang_prompt)${bold_green}\u@[${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\012\\\$ "
     unset _ip
 fi
