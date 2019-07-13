@@ -11,6 +11,7 @@ set show-all-if-ambiguous On
 set show-all-if-unmodified On
 # sets completions to be appended by characters that indicate their file types reported by the stat system call
 set visible-stats On
+set bell-style none
 
 $if Python
     set completion-prefix-display-length 0
