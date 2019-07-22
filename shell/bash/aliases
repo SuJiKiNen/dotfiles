@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 alias e="emacs -nw"
+alias ve='env EMACS_USER_DIRECTORY=${XDG_CONFIG_HOME}/emacs/vanilla/.emacs.d emacs -nw'
+# -u None don't load vimrc, -N no vi compatible
+alias v="vim -u NONE -N"
+
 alias jsonpp="python -c 'import sys, json; print(json.dumps(json.load(sys.stdin), indent=2))'"
 
 # Print each PATH entry on a separate line
 # https://askubuntu.com/questions/600018/how-to-display-the-paths-in-path-separately
 alias path='echo -e ${PATH//:/\\n}'
 alias myip="curl http://checkip.amazonaws.com"
-alias ve='env EMACS_USER_DIRECTORY=${XDG_CONFIG_HOME}/emacs/vanilla/.emacs.d emacs -nw'
 
 alias ls='ls -F -h --color=always -v --author --time-style=long-iso'
 alias ll='ls -l'
