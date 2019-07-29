@@ -54,9 +54,14 @@ fi
 
 # nvm
 export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
-if [[ -n "$BASH_VERSION" && -d "$NVM_DIR" ]]; then
-    # shellcheck source=/dev/null
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    # shellcheck source=/dev/null
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
+function nvm() {
+    # lazy load nvm https://github.com/nvm-sh/nvm/issues/1277
+    printf "Lazy loading nvm..."
+    if [[ -n "$BASH_VERSION" && -d "$NVM_DIR" ]]; then
+        # shellcheck source=/dev/null
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        # shellcheck source=/dev/null
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        nvm
+    fi
+}
