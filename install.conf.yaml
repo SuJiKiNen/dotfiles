@@ -49,3 +49,6 @@
 - link:
     ~/.emacs: editor/emacs/.emacs
     ${XDG_CONFIG_HOME}/emacs/vanilla/.emacs.d: ./editor/emacs/vanilla/.emacs.d
+
+- link:
+    ${XDG_CONFIG_HOME}/termux/termux.properties: tools/termux/properties
