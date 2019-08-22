@@ -72,8 +72,8 @@ function pipsrc {
             export PIP_INDEX_URL=http://mirrors.aliyun.com/pypi/simple/
             echo "using $1 pip source!!";;
         douban)
-            export PIP_TRUSTED_HOST=pypi.douban.com
-            export PIP_INDEX_URL=http://pypi.douban.com/simple/
+            export PIP_TRUSTED_HOST=pypi.doubanio.com
+            export PIP_INDEX_URL=https://pypi.doubanio.com/simple/
             echo "using $1 pip source!!";;
         edu)
             export PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
