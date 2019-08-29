@@ -44,13 +44,13 @@ _fzf_pipenv_env() {
 
 _fzf_docker_ps() {
     local container_id
-    container_id="$(docker ps --format '{{ .ID}} {{ .Image}}' | fzf --ansi --no-sort -m | awk '{print $1}' | __escape)"
+    container_id="$(docker ps --format '{{ .ID}}\t{{ .Names}}\t{{ .RunningFor}}\t{{ .Image}}' | column -t -s $'\t' | fzf --ansi --no-sort -m | awk '{print $2}' | __escape)"
     __readline_insert "$container_id"
 }
 
 _fzf_docker_ps_a() {
     local container_id
-    container_id="$(docker ps -a --format '{{ .ID}} {{ .Image}}' | fzf --ansi --no-sort -m | awk '{print $1}' | __escape)"
+    container_id="$(docker ps -a --format '{{ .ID}}\t{{ .Names}}\t{{ .RunningFor}}\t{{ .Image}}' | column -t -s $'\t' | fzf --ansi --no-sort -m | awk '{print $2}' | __escape)"
     __readline_insert "$container_id"
 }
 
