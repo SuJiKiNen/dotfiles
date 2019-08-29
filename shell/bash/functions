@@ -128,3 +128,9 @@ function extract {
         printf "%s" "'$1' is not a valid file"
     fi
 }
+
+function swap_file {
+    local TMPFILE
+    TMPFILE=$(mktemp) || return
+    mv -v "$1" "$TMPFILE" && mv -v "$2" "$1" && mv -v "$TMPFILE" "$2"
+}
