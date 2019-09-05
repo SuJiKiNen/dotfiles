@@ -38,7 +38,9 @@ _fzf_git_status() {
 
 _fzf_pipenv_env() {
     local env_name
-    env_name="$(pipenv --envs | tr -d ' ' | grep ^- | tr -d '-' | fzf -m)"
+    env_name="$(pipenv --envs |
+    awk 'match($0, /PIPENV.*$/) {print substr($0, RSTART, RLENGTH)}'|
+    fzf -m)"
     __readline_insert "$env_name"
 }
 
