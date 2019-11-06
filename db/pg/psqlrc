@@ -1,0 +1,7 @@
+\x auto
+
+\pset null ∅
+
+
+-- queries
+\set replication 'SELECT * FROM pg_stat_replication;'

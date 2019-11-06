@@ -52,3 +52,6 @@
 
 - link:
     ${XDG_CONFIG_HOME}/termux/termux.properties: tools/termux/properties
+
+- link:
+    ${XDG_CONFIG_HOME}/pg/psqlrc: db/pg/psqlrc
