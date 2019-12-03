@@ -1,5 +1,5 @@
 * python
 ** using douban pip source
    #+BEGIN_SRC shell
-     pipsrc douban
+     pipsrc aliyun
    #+END_SRC
