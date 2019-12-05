@@ -13,10 +13,13 @@ complete -o "nospace" -F _pipsrc pipsrc
 
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+# This works as fallback if no fzf or bash-completion not installed
+if ! [ -x "$(command -v fzf)" ]; then
+    [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+fi
 
 # bash completions
-if [[ -n "$BASH_VERSION" ]]; then
+if [ -n "$BASH_VERSION" ]; then
     if [ -r /etc/bash_completion ]; then
         # shellcheck disable=SC1091
         source /etc/bash_completion
