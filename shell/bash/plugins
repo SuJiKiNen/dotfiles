@@ -13,6 +13,7 @@ if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]; then
     bind '"\ec": capitalize-word'
     # shellcheck disable=SC2016
     bind '"d":"$(__fzf_cd__)"'
+    export FZF_COMPLETION_TRIGGER=','
 fi
 
 # init pyenv
