@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # init fzf
-if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]; then
-    if [[ "$OSTYPE" != "msys" ]]; then
+if [ -n "$BASH_VERSION" ] && [ -e ~/.fzf.bash ]; then
+    if [ "$OSTYPE" != "msys" ]; then
         # shellcheck disable=SC1090
         source ~/.fzf.bash
     fi
@@ -17,7 +17,7 @@ if [[ -n "$BASH_VERSION" && -e ~/.fzf.bash ]]; then
 fi
 
 # init pyenv
-if [[ "$OSTYPE" != "msys" && -d "$HOME/.pyenv" ]]; then
+if [ "$OSTYPE" != "msys" ] && [ -d "$HOME/.pyenv" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     if command -v pyenv 1>/dev/null 2>&1; then
@@ -39,7 +39,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # bash-pinyin-abbrev-completion
-function _setup_bash_pinyin_abbrev_completion() {
+function _setup_bash_pinyin_abbrev_completion {
     export PY_COMP_ROOT="$HOME/.bash-pinyin-abbrev-completion"
     export PATH="$PY_COMP_ROOT/bin:$PATH"
     local comp_file
@@ -48,7 +48,7 @@ function _setup_bash_pinyin_abbrev_completion() {
     source "$comp_file"
 }
 
-if [[ -d "$HOME/.bash-pinyin-abbrev-completion" ]]; then
+if [ -d "$HOME/.bash-pinyin-abbrev-completion" ]; then
     _setup_bash_pinyin_abbrev_completion
 fi
 
@@ -58,7 +58,7 @@ export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
 function nvm() {
     # lazy load nvm https://github.com/nvm-sh/nvm/issues/1277
     printf "Lazy loading nvm..."
-    if [[ -n "$BASH_VERSION" && -d "$NVM_DIR" ]]; then
+    if [ -n "$BASH_VERSION" ] && [ -d "$NVM_DIR" ]; then
         # shellcheck source=/dev/null
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         # shellcheck source=/dev/null

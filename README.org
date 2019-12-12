@@ -1,5 +1,10 @@
 * python
-** using douban pip source
+** using aliyun pip source
    #+BEGIN_SRC shell
      pipsrc aliyun
    #+END_SRC
+
+* lint shell scripts
+  #+BEGIN_SRC shell
+    make check=FILE
+  #+END_SRC
