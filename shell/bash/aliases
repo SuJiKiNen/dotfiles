@@ -14,3 +14,9 @@ alias myip="curl http://checkip.amazonaws.com"
 alias ls='ls -F -h --color=always -v --author --time-style=long-iso'
 alias ll='ls -l'
 alias l='ls -l -a'
+
+
+# docker commands help
+alias docker-rm-untagged-images='docker rmi $(docker images -q -f dangling=true)'
+alias docker-rm-all-containers='docker rm $(docker ps -aq)'
+alias docker-rm-all-exited-containers='docker rm $(docker ps -q -f status=exited)'
