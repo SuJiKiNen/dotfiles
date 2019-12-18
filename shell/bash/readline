@@ -80,6 +80,26 @@ _fzf_docker_images() {
     __readline_insert "$image_id"
 }
 
+_fzf_network_interfaces_name() {
+    local interface_name_and_ip
+    interface_name_and_ip="$(ip -oneline addr show | awk '{split($4, ip, "/"); print $2,ip[1]}' |
+    column -t -s $' ' |
+    fzf --ansi --no-sort -m |
+    awk '{print $1}' |
+    __escape)"
+    __readline_insert "$interface_name_and_ip"
+}
+
+_fzf_network_interfaces_ip() {
+    local interface_name_and_ip
+    interface_name_and_ip="$(ip -oneline addr show | awk '{split($4, ip, "/"); print $2,ip[1]}' |
+    column -t -s $' ' |
+    fzf --ansi --no-sort -m |
+    awk '{print $2}' |
+    __escape)"
+    __readline_insert "$interface_name_and_ip"
+}
+
 fzf-command() {
     local cmds
     IFS='' read -r -d '' cmds <<"EOF"
@@ -90,17 +110,19 @@ pipenv_env
 docker_ps
 docker_ps_a
 docker_images
+network_interfaces_ip
+network_interfaces_name
 EOF
     local cmd
     cmd=$(echo "$cmds" | fzf +m)
-    if [[ -z $cmd ]]; then
+    if [ -z "$cmd" ]; then
         return 0
     fi
     eval _fzf_"${cmd}"
 }
 
 
-if [[ -n "$BASH_VERSION" ]]; then
+if [ -n "$BASH_VERSION" ]; then
     if command -v fzf >/dev/null 2>&1; then
         bind -x '"x": fzf-command'
     fi
