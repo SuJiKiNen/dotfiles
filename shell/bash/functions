@@ -134,3 +134,75 @@ function swap_file {
     TMPFILE=$(mktemp) || return
     mv -v "$1" "$TMPFILE" && mv -v "$2" "$1" && mv -v "$TMPFILE" "$2"
 }
+
+
+function docker-proxy-build {
+    printf "you must set proxy env first!\n"
+    printf "eg. export http_proxy=http://127.0.0.1:1080\n"
+    ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null)"
+    local http_proxy=""
+    local https_proxy=""
+    if [ -e "${ROOT_DIR}" ]; then
+        :
+    else
+        ROOT_DIR="$(pwd)"
+    fi
+    builtin cd "${ROOT_DIR}" && \
+    docker build \
+           --build-arg https_proxy="$https_proxy" \
+           --build-arg http_proxy="$http_proxy" \
+           -t="$(basename "$ROOT_DIR")" . ;
+}
+
+
+function docker-copy-image-to-ssh-remote {
+    local WITH_PV=
+    if command -v pv > /dev/null; then
+        WITH_PV=1
+    fi
+
+    if ! command -v bzip2 > /dev/null; then
+        echo 'bzip2 must be installed' >&2
+        return 0
+    fi
+
+    if [ "$#" -lt 2 ]; then
+        printf "usage: docker-ssh-copy-image <image> <ssh options>\n" >&2
+        return 0
+    fi
+
+    local IMAGE="$1"
+    shift
+    local SSH_OPTIONS=( "$@" )
+    if [ "${WITH_PV}" ]; then
+        docker save "${IMAGE}" | bzip2 | pv | ssh "${SSH_OPTIONS[@]}" 'bunzip2 | docker load'
+    else
+        docker save "${IMAGE}" | bzip2 | ssh "${SSH_OPTIONS[@]}" 'bunzip2 | docker load'
+    fi
+}
+
+function docker-copy-image-from-ssh-remote {
+    local WITH_PV=
+    if command -v pv > /dev/null; then
+        WITH_PV=1
+    fi
+
+    if ! command -v bzip2 > /dev/null; then
+        echo 'bzip2 must be installed' >&2
+        return 0
+    fi
+
+    if [ "$#" -lt 2 ]; then
+        printf "usage: docker-ssh-copy-image <image> <ssh options>\n" >&2
+        return 0
+    fi
+
+    local IMAGE="$1"
+    shift
+    local SSH_OPTIONS=( "$@" )
+    if [ "${WITH_PV}" ]; then
+        ssh "${SSH_OPTIONS[@]}" 'docker save' "$IMAGE" '| bzip2' | pv | bunzip2 | docker load
+    else
+        ssh "${SSH_OPTIONS[@]}" 'docker save' "$IMAGE" '| bzip2' | bunzip2 | docker load
+    fi
+}
