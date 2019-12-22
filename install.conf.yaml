@@ -12,17 +12,18 @@
       force: true
 
 - link:
-    ~/.bash_aliases: shell/bash/aliases
-    ~/.bash_completions: shell/bash/completions
-    ~/.bash_colors: shell/bash/colors
-    ~/.bash_envs: shell/bash/envs
-    ~/.bash_functions: shell/bash/functions
-    ~/.bash_keys: shell/bash/keys
-    ~/.bash_opts: shell/bash/opts
     ~/.bash_profile: shell/bash/profile
     ~/.bashrc: shell/bash/bashrc
-    ~/.bash_plugins: shell/bash/plugins
-    ~/.bash_readline: shell/bash/readline
+
+    ~/.bash/aliases: shell/bash/aliases
+    ~/.bash/completions: shell/bash/completions
+    ~/.bash/colors: shell/bash/colors
+    ~/.bash/envs: shell/bash/envs
+    ~/.bash/functions: shell/bash/functions
+    ~/.bash/keys: shell/bash/keys
+    ~/.bash/opts: shell/bash/opts
+    ~/.bash/plugins: shell/bash/plugins
+    ~/.bash/readline: shell/bash/readline
     ~/.bash/prompt: shell/bash/prompt
     ~/.bash-pinyin-abbrev-completion: submodules/bash-pinyin-abbrev-completion
 
