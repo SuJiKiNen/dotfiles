@@ -68,7 +68,7 @@ function nvm() {
 }
 
 # autojump
-if [ -n "$BASH_VERSION" ] && [ -e .autojump ]; then
+if [ -n "$BASH_VERSION" ] && [ -e "$HOME/.autojump" ]; then
     # shellcheck source=/dev/null
     [ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 fi
