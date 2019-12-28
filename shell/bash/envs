@@ -56,3 +56,7 @@ if [[ -n "$BASH_VERSION" ]]; then
     export PS1="\$(_prog_lang_prompt)${bold_green}[\u@${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\012\\\$ "
     unset _ip
 fi
+
+# PYTHONUSERBASE Defines the user base directory, which is used to compute the path of the user site-packages directory and Distutils installation paths for python setup.py install --user.
+export PYTHONUSERBASE=${HOME}/.local
+export PATH=${PATH}:${PYTHONUSERBASE}/bin

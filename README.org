@@ -6,5 +6,5 @@
 
 * lint shell scripts
   #+BEGIN_SRC shell
-    make check=FILE
+    make FILE=/path/to/file/ check
   #+END_SRC
