@@ -22,3 +22,4 @@ USER ${USER}
 WORKDIR ${HOME}
 COPY --chown=SuJiKiNen:SuJiKiNen . ${HOME}/dotfiles
 COPY --chown=root:root . /root/dotfiles
+RUN cd ${HOME}/dotfiles && ./install
