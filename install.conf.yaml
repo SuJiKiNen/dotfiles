@@ -15,16 +15,7 @@
     ~/.bash_profile: shell/bash/profile
     ~/.bashrc: shell/bash/bashrc
 
-    ~/.bash/aliases: shell/bash/aliases
-    ~/.bash/completions: shell/bash/completions
-    ~/.bash/colors: shell/bash/colors
-    ~/.bash/envs: shell/bash/envs
-    ~/.bash/functions: shell/bash/functions
-    ~/.bash/keys: shell/bash/keys
-    ~/.bash/opts: shell/bash/opts
-    ~/.bash/plugins: shell/bash/plugins
-    ~/.bash/readline: shell/bash/readline
-    ~/.bash/prompt: shell/bash/prompt
+    ~/.bash: shell/bash
     ~/.bash-pinyin-abbrev-completion: submodules/bash-pinyin-abbrev-completion
 
 - link:
@@ -54,6 +45,7 @@
 
 - link:
     ${XDG_CONFIG_HOME}/termux/termux.properties: tools/termux/properties
+    ${PYTHONUSERBASE}/bin/generate_dockerignore: generate_dockerignore.py
 
 - link:
     ${XDG_CONFIG_HOME}/pg/psqlrc: db/pg/psqlrc

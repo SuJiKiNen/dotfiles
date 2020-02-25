@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+
 def transform_line(line):
     if line.strip() == '':
         return line

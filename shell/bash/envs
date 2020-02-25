@@ -38,25 +38,6 @@ else
 fi
 export EDITOR
 
-if [[ -n "$BASH_VERSION" ]]; then
-    # disable the default virtualenv prompt change
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    function _prog_lang_prompt(){
-        local _virtualenv
-        _virtualenv=$(_virtualenv_prompt "venv:")
-        test -n "${_virtualenv}" || return
-        local _python_version
-        _python_version=$(_python_version_prompt "py:")
-        printf "%b" '\012'
-        printf "%s" "(${_python_version} ${_virtualenv})"
-        printf "%b" '\012\007'
-    }
-    _ip=$(_local_ip_prompt "" " ")
-    # shellcheck disable=SC2154
-    export PS1="\$(_prog_lang_prompt)${bold_green}[\u@${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\012\\\$ "
-    unset _ip
-fi
-
 # PYTHONUSERBASE Defines the user base directory, which is used to compute the path of the user site-packages directory and Distutils installation paths for python setup.py install --user.
 export PYTHONUSERBASE=${HOME}/.local
 export PATH=${PATH}:${PYTHONUSERBASE}/bin

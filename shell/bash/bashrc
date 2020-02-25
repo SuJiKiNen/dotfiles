@@ -4,6 +4,7 @@ BASH_SOURCE_FILES=(
     opts
     colors
     prompt
+    prompt_command
     envs
     aliases
     functions
