@@ -7,12 +7,12 @@
          test -n "${_virtualenv}" || return
          local _python_version
          _python_version=$(_python_version_prompt "py:")
-         printf "%b" '\012'
+         printf "%b" '\n'
          printf "%s" "(${_python_version} ${_virtualenv})"
-         printf "%b" '\012\007'
+         printf "%b" '\n \b' # trick to avoid command substitution trim \n
      }
      _ip=$(_local_ip_prompt "" " ")
      # shellcheck disable=SC2154
-     export PS1="\$(_prog_lang_prompt)${bold_green}[\u@${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\012\\\$ "
+     export PS1="\$(_prog_lang_prompt)${bold_green}[\u@${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\n\\\$ "
      unset _ip
  fi
