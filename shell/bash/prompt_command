@@ -13,6 +13,6 @@
      }
      _ip=$(_local_ip_prompt "" " ")
      # shellcheck disable=SC2154
-     export PS1="\$(_prog_lang_prompt)${bold_green}[\u@${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt)${normal}\n\\\$ "
+     export PS1="\$(_prog_lang_prompt 2>/dev/null)${bold_green}[\u@${_ip}\h] ${bold_yellow}\w ${bold_orange}\$(_git_prompt 2>/dev/null)${normal}\n\\\$ "
      unset _ip
  fi
