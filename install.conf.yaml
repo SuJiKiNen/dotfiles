@@ -16,7 +16,7 @@
     ~/.bashrc: shell/bash/bashrc
 
     ~/.bash: shell/bash
-    ~/.bash-pinyin-abbrev-completion: submodules/bash-pinyin-abbrev-completion
+    ~/.pyfiledir: submodules/pyfiledir
 
 - link:
     ~/.oh-my-zsh: submodules/oh-my-zsh

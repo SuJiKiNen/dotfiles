@@ -38,9 +38,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
     complete -F _pipenv_completion -o default pipenv
 fi
 
-# bash-pinyin-abbrev-completion
-function _setup_bash_pinyin_abbrev_completion {
-    export PY_COMP_ROOT="$HOME/.bash-pinyin-abbrev-completion"
+# pyfiledir
+function _setup_pyfiledir {
+    export PY_COMP_ROOT="$HOME/.pyfiledir"
     export PATH="$PY_COMP_ROOT/bin:$PATH"
     local comp_file
     comp_file="$PY_COMP_ROOT/shell/completion.bash"
@@ -48,8 +48,8 @@ function _setup_bash_pinyin_abbrev_completion {
     source "$comp_file"
 }
 
-if [ -d "$HOME/.bash-pinyin-abbrev-completion" ]; then
-    _setup_bash_pinyin_abbrev_completion
+if [ -d "$HOME/.pyfiledir" ]; then
+    _setup_pyfiledir
 fi
 
 
