@@ -6,6 +6,7 @@ BASH_SOURCE_FILES=(
     prompt
     prompt_command
     envs
+    envs.local
     aliases
     functions
     completions

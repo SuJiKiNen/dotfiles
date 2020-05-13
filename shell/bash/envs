@@ -17,6 +17,7 @@ export INPUTRC="${XDG_CONFIG_HOME%%/}${XDG_CONFIG_HOME:+/}readline/inputrc"
 #---------------|------remove /------|-if not empty add /|----------------|
 
 export PSQLRC="${PSQLRC:-$XDG_CONFIG_HOME/pg/psqlrc}"
+export ENVS="${HOME}/.bash/envs.local"
 
 if [[ "$OSTYPE" == "msys" ]]; then
     HOSTS="C:\Windows\System32\drivers\etc\hosts"
