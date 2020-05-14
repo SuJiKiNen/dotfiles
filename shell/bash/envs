@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-export HISTCONTROL="ignoredups:ignorespace"
+export HISTCONTROL="ignorespace:erasedups"
+export HISTIGNORE="ls:ps:history"
+export HISTSIZE=100000
+export HISTFILESIZE=10000
 
 
 if [[ -n "$BASH_VERSION" ]]; then
