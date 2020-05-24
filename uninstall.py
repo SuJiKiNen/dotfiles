@@ -12,6 +12,7 @@ import sys
 CURDIR=os.getcwd()
 YMAL_PATH=os.path.join(
     CURDIR,
+    "submodules",
     "dotbot",
     "lib",
     "pyyaml",
