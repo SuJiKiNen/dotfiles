@@ -1,5 +1,5 @@
 [submodule "dotbot"]
-	path = dotbot
+	path = submodules/dotbot
 	url = https://github.com/SuJiKiNen/dotbot
 [submodule "submodules/oh-my-zsh"]
 	path = submodules/oh-my-zsh
