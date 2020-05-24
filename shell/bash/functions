@@ -233,6 +233,7 @@ function proxy_on() {
         DEFAULT_PORT=$(awk -F '[:@]' '{ print $(NF)}' "$PROXY_CONF")
         DEFAULT_HOST=$(awk -F '[:@]' '{ print $(NF-1)}' "$PROXY_CONF")
     fi
+    DEFAULT_PORT=${DEFAULT_PORT:-1080}
 
     read -er -p $'Enter Your Proxy Server Username:\n' username
     if [ -n "$username" ]; then
@@ -250,7 +251,7 @@ function proxy_on() {
     PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY"
     for envar in $PROXY_ENV
     do
-        printf "Setting $envar to $_proxy_addr\n"
+        printf "Setting %s to %s\n" "$envar" "$_proxy_addr"
         export "$envar"="$_proxy_addr"
     done
     printf %s "$host:$port" > "$PROXY_CONF"
@@ -260,7 +261,7 @@ function proxy_off(){
     PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy no_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY NO_PROXY"
     for envar in $PROXY_ENV
     do
-        printf "Unsetting $envar\n"
+        printf "Unsetting %s\n" "$envar"
         unset "$envar"
     done
 }
