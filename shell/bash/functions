@@ -268,9 +268,9 @@ function proxy_off(){
 
 function proxy_status(){
     PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy no_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY NO_PROXY"
-    printf "Proxy Status:"
+    printf "Proxy Status:\n"
     for envar in $PROXY_ENV
     do
-        printf "%s\n" "$envar"="$_proxy_addr"
+        printf "%s\n" "$envar"="${!envar}"
     done
 }
