@@ -5,3 +5,17 @@
 
 -- queries
 \set replication 'SELECT * FROM pg_stat_replication;'
+
+
+--%n
+--    The current database user name
+--%M
+-- The full host name (with domain name) of the database server, or [local] if the connection is over a Unix domain socket, or [local:/dir/name], if the Unix domain socket is not at the compiled in default location.
+--%>
+--   The port number at which the database server is listening.
+--%/
+--    The current database
+--%#
+--    > for regular users, # for database superusers.
+
+\set PROMPT1 'postgresql://%n@%M:%>/%/\n%# '
