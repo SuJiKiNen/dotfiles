@@ -580,4 +580,14 @@ c.StoreMagics.autorestore = True
 c.InteractiveShellApp.extensions = ['autoreload']
 c.InteractiveShellApp.exec_lines = ['%autoreload 2']
 c.InteractiveShellApp.exec_lines.append('print("Warning: disable autoreload in ipython_config.py to improve performance.")')
-c.InteractiveShellApp.exec_lines.append('import sys; print("Running IPython from: " + sys.argv[0])')
+c.InteractiveShellApp.exec_lines.append(
+    """
+import sys
+import os
+
+pathname = os.path.dirname(sys.argv[0])
+executable = os.path.basename(sys.argv[0])
+fullpath = os.path.abspath(pathname)
+print('Running IPython from: ' + os.path.join(fullpath, executable))
+    """
+)
