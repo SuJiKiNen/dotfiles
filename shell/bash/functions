@@ -66,6 +66,7 @@ finally:
 }
 
 function pipsrc {
+    export PIP_DEFAULT_TIMEOUT=120 # sec
     case "$1" in
         aliyun)
             export PIP_TRUSTED_HOST=mirrors.aliyun.com
@@ -84,9 +85,10 @@ function pipsrc {
             unset PIP_TRUSTED_HOST
             unset PIP_INDEX_URL
             unset PIPENV_PYPI_MIRROR
+            unset PIP_DEFAULT_TIMEOUT
     esac
 
-    if [[ -n "$PIP_INDEX_URL"  ]]; then
+    if [ -n "$PIP_INDEX_URL"  ]; then
         export PIPENV_PYPI_MIRROR=$PIP_INDEX_URL
     fi
 }
