@@ -1,0 +1,15 @@
+
+
+Host *
+     ForwardAgent yes
+     ServerAliveInterval 3
+     ServerAliveCountMax 20
+     TCPKeepAlive no
+     ControlMaster auto
+     ControlPath ~/.ssh/connection-%r@%h:%p
+     ControlPersist 4h
+     Compression yes
+
+# Local Variables:
+# mode: conf-unix
+# End:

@@ -45,6 +45,7 @@
 
 - link:
     ${XDG_CONFIG_HOME}/termux/termux.properties: tools/termux/properties
+    ${XDG_CONFIG_HOME}/ssh: tools/ssh
     ${PYTHONUSERBASE}/bin/generate_dockerignore: generate_dockerignore.py
 
 - link:
