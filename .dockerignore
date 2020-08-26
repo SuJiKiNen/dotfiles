@@ -102,3 +102,4 @@ site
 
 # mypy
 **/.mypy_cache/
+shell/bash/envs.local
