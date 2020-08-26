@@ -151,9 +151,9 @@ function docker-proxy-build {
     fi
     builtin cd "${ROOT_DIR}" && \
     docker build \
-           --build-arg https_proxy="$https_proxy" \
-           --build-arg http_proxy="$http_proxy" \
-           -t="$(basename "$ROOT_DIR")" . ;
+        --build-arg https_proxy="$https_proxy" \
+        --build-arg http_proxy="$http_proxy" \
+        -t="$(basename "$ROOT_DIR")" . ;
 }
 
 
@@ -212,7 +212,7 @@ function docker-copy-image-from-ssh-remote {
 
 ## Proxy functions
 ## Modified from https://wiki.archlinux.org/index.php/proxy_settings
-function proxy_on() {
+function proxy_on {
     export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
     PROXY_CONF=${XDG_CONFIG_HOME:-~/.config}/proxy.config
 
@@ -259,7 +259,7 @@ function proxy_on() {
     printf %s "$host:$port" > "$PROXY_CONF"
 }
 
-function proxy_off(){
+function proxy_off {
     PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy no_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY NO_PROXY"
     for envar in $PROXY_ENV
     do
@@ -268,7 +268,7 @@ function proxy_off(){
     done
 }
 
-function proxy_status(){
+function proxy_status {
     PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy no_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY NO_PROXY"
     printf "Proxy Status:\n"
     for envar in $PROXY_ENV
