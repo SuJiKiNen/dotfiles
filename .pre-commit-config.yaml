@@ -17,7 +17,7 @@ repos:
       verbose: true
 
 - repo: https://github.com/openstack/bashate
-  rev: 0.6.0
+  rev: 2.0.0
   hooks:
     - id: bashate
       args: ["-i", "E006,E010"]
