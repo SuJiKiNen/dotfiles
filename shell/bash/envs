@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export USERPROFILE=$HOME
+
 export HISTCONTROL="ignorespace:erasedups"
 export HISTIGNORE="ls:ps:history"
 export HISTSIZE=100000
