@@ -44,12 +44,18 @@ function _setup_pyfiledir {
     export PATH="$PY_COMP_ROOT/bin:$PATH"
     local comp_file
     local key_binding_file
-    comp_file="$PY_COMP_ROOT/shell/readline_completion.bash"
-    key_binding_file="$PY_COMP_ROOT/shell/readline_key_binding.bash"
-    # shellcheck source=/dev/null
-    source "$comp_file"
-    # shellcheck source=/dev/null
-    source "$key_binding_file"
+    if [ "$OSTYPE" == "msys" ]; then
+        comp_file="$PY_COMP_ROOT/shell/completion.bash"
+        # shellcheck source=/dev/null
+        source "$comp_file"
+    else
+        comp_file="$PY_COMP_ROOT/shell/readline_completion.bash"
+        key_binding_file="$PY_COMP_ROOT/shell/readline_key_binding.bash"
+        # shellcheck source=/dev/null
+        source "$comp_file"
+        # shellcheck source=/dev/null
+        source "$key_binding_file"
+    fi
 }
 
 if [ -d "$HOME/.pyfiledir" ]; then
