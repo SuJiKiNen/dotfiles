@@ -3,12 +3,12 @@
      export VIRTUAL_ENV_DISABLE_PROMPT=1
      function _prog_lang_prompt(){
          local _virtualenv
-         _virtualenv=$(_virtualenv_prompt "venv:")
+         _virtualenv=$(_virtualenv_prompt "venv: ")
          test -n "${_virtualenv}" || return
          local _python_version
-         _python_version=$(_python_version_prompt "py:")
+         _python_version=$(_python_version_prompt "Python: ")
          printf "%b" '\n'
-         printf "%s" "(${_python_version} ${_virtualenv})"
+         printf "%b" "(${_python_version})\n(${_virtualenv})"
          printf "%b" '\n \b' # trick to avoid command substitution trim \n
      }
      _ip=$(_local_ip_prompt "" " ")
