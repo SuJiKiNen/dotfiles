@@ -18,10 +18,27 @@ print(get_ip())
 ")"
 }
 
-_local_ip=$(_get_local_ip)
+function _read_ip_from_conf {
+    if [ -n "$_local_ip" ]; then
+        print "%s" _local_ip
+    else
+        mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"
+        IP_CACHE=${XDG_CACHE_HOME:-$HOME/.cache}/ip.cache
+        if [ -s "$IP_CACHE" ]; then
+            printf "%s" "$(<"$IP_CACHE")"
+            _get_local_ip > "$IP_CACHE" &
+            return 0
+        else
+            _get_local_ip > "$IP_CACHE" &
+            return 1
+        fi
+    fi
+}
+
+_local_ip=$(_read_ip_from_conf)
 
 function _local_ip_prompt() {
-    if [[ -n "${_local_ip}" ]]; then
+    if [ -n "${_local_ip}" ]; then
         local prefix="$1"
         local suffix="$2"
         printf "%s" "${prefix}${_local_ip}${suffix}"
