@@ -280,19 +280,20 @@ function proxy_status {
 function compile-ssh-config {
     local need_update=false
 
-    for f in ~/.ssh/*.config
+    for f in ~/.ssh/config.*
     do
         if [ "$f" -nt ~/.ssh/config ]; then
             need_update=true
         fi
     done
 
-    if [ "${XDG_CONFIG_HOME}/ssh/config.common" -nt ~/.ssh/config ]; then
+    if [ "$SSH_CONFIG_COMMON" -nt ~/.ssh/config ]; then
         need_update=true
     fi
 
     if [ $need_update == true ]; then
         echo "Updated ssh config!"
-        cat ~/.ssh/local.config "${XDG_CONFIG_HOME}"/ssh/config.common > ~/.ssh/config
+        cat "$SSH_CONFIG_LOCAL" "$SSH_CONFIG_COMMON" > ~/.ssh/config
+        cat ~/.ssh/config
     fi
 }

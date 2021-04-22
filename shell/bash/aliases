@@ -22,6 +22,3 @@ alias grep='grep --color=auto'
 alias docker-rm-untagged-images='docker rmi $(docker images -q -f dangling=true)'
 alias docker-rm-all-containers='docker rm $(docker ps -aq)'
 alias docker-rm-all-exited-containers='docker rm $(docker ps -q -f status=exited)'
-
-# borrow from https://superuser.com/a/511369
-alias ssh='compile-ssh-config && ssh'
