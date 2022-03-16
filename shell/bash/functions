@@ -107,8 +107,8 @@ function hex {
 
 function pip {
     # https://stackoverflow.com/questions/25399079/how-to-overwrite-a-bash-command
-    command pip --version
-    command pip "$@"
+    command python -m pip --version
+    command python -m pip "$@"
 }
 
 function extract {
