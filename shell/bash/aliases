@@ -17,6 +17,8 @@ alias l='ls -l -a'
 
 alias grep='grep --color=auto'
 
+alias own='sudo chown -R $USER:$GROUP '
+
 
 # docker commands help
 alias docker-rm-untagged-images='docker rmi $(docker images -q -f dangling=true)'
