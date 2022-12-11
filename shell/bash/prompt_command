@@ -1,14 +1,15 @@
+#!/usr/bin/env bash
+
  if [ -n "$BASH_VERSION" ]; then
      # disable the default virtualenv prompt change
      export VIRTUAL_ENV_DISABLE_PROMPT=1
      function _prog_lang_prompt(){
          local _virtualenv
-         _virtualenv=$(_virtualenv_prompt "venv: ")
+         _virtualenv=$(_virtualenv_prompt "(Venv: " ") ")
          test -n "${_virtualenv}" || return
          local _python_version
-         _python_version=$(_python_version_prompt "Python: ")
-         printf "%b" '\n'
-         printf "%b" "(${_python_version})\n(${_virtualenv})"
+         _python_version=$(_python_version_prompt "(Python: " ") ")
+         printf "%b" "(PIP_MIRROR:${PIP_MIRROR_NAME}) ${_python_version}${_virtualenv}"
          printf "%b" '\n \b' # trick to avoid command substitution trim \n
      }
      _ip=$(_local_ip_prompt "" " ")

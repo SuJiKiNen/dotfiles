@@ -69,19 +69,23 @@ function pipsrc {
     export PIP_DEFAULT_TIMEOUT=120 # sec
     case "$1" in
         aliyun)
+            export PIP_MIRROR_NAME=aliyun
             export PIP_TRUSTED_HOST=mirrors.aliyun.com
             export PIP_INDEX_URL=http://mirrors.aliyun.com/pypi/simple/
             echo "using $1 pip source!!";;
         douban)
+            export PIP_MIRROR_NAME=douban
             export PIP_TRUSTED_HOST=pypi.doubanio.com
             export PIP_INDEX_URL=https://pypi.doubanio.com/simple/
             echo "using $1 pip source!!";;
         edu)
+            export PIP_MIRROR_NAME=edu
             export PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
             export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple/
             echo "using $1 pip source!!";;
         *)
             echo "unset pip source!!"
+            unset PIP_MIRROR_NAME
             unset PIP_TRUSTED_HOST
             unset PIP_INDEX_URL
             unset PIPENV_PYPI_MIRROR
