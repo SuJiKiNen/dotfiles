@@ -1,5 +1,4 @@
 
-
 Host *
      ForwardAgent yes
      ServerAliveInterval 3
@@ -9,6 +8,11 @@ Host *
      ControlPath ~/.ssh/connection-%r@%h:%p
      ControlPersist 4h
      Compression yes
+
+Host github.com
+     Hostname ssh.github.com
+     Port 443
+     User git
 
 # Local Variables:
 # mode: conf-unix
