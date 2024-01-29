@@ -1,0 +1,13 @@
+layer-toggle 按住，临时切换层
+layer-delay 类似leadkey，按一下多少ms内处于指定层
+layer-next 同上，不会超时
+layer-switch 切换层
+
+tap-next dual key，tap hold 
+tap-hold 同上会超时
+tap-next-hold 类似于tap-next 但是超时保持为hold
+(tap-hold-next 200 x lsft :timeout-button x)
+可以通过:timeout-button指定超时时按的按键
+
+tap-next-release
+tap-next-press
