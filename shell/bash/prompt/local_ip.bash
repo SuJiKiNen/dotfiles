@@ -1,7 +1,7 @@
 function _get_local_ip() {
-    command -v python > /dev/null 2>&1 || return
+    command -v python3 > /dev/null 2>&1 || return
     # https://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib
-    printf "%s" "$(python -c "
+    printf "%s" "$(python3 -c "
 import socket
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
