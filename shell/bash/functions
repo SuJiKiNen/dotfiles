@@ -301,3 +301,74 @@ function compile-ssh-config {
         cat ~/.ssh/config
     fi
 }
+
+function git-staged-full() {
+  # 1. Check if in Git repo
+  if ! git rev-parse --git-dir >/dev/null 2>&1; then
+    echo "❌ Not in a Git repository." >&2
+    return 1
+  fi
+
+  # 2. Get staged files
+  local staged_files
+  staged_files=$(git diff --cached --name-only)
+
+  # 3. Exit if nothing staged
+  if [ -z "$staged_files" ]; then
+    echo "ℹ️  No staged changes." >&2
+    return 0
+  fi
+
+  # 4. Build output with REAL newlines using $'...'
+  local output=""
+  while IFS= read -r file; do
+    [ -n "$file" ] || continue
+
+    output+=$'====================\n'
+    output+=$'FILE: '
+    output+="$file"$'\n'
+    output+=$'--------------------\n'
+
+    # OLD CONTENT
+    output+=$'[OLD CONTENT (HEAD)]\n'
+    if git cat-file -e "HEAD:$file" 2>/dev/null; then
+      old_content=$(git show "HEAD:$file" 2>/dev/null)
+      output+="$old_content"$'\n'
+    else
+      output+=$'(File not in HEAD — newly added)\n'
+    fi
+
+    # NEW CONTENT
+    output+=$'\n[NEW CONTENT (STAGED)]\n'
+    if git ls-files -s -- "$file" >/dev/null 2>&1; then
+      new_content=$(git show ":$file" 2>/dev/null)
+      output+="$new_content"$'\n'
+    else
+      output+=$'(File staged for deletion)\n'
+    fi
+
+    # DIFF
+    output+=$'\n[DIFF]\n'
+    diff_content=$(git diff --cached -- "$file")
+    output+="$diff_content"$'\n\n'
+  done <<< "$staged_files"
+
+  # 5. Add review note (with real newline)
+  output+=$'请审查修改内容，改动是否合理，是否有优化的地方。\n'
+
+  # 6. Copy to clipboard
+  if command -v xclip &> /dev/null; then
+    printf '%s' "$output" | xclip -selection clipboard
+  elif command -v pbcopy &> /dev/null; then
+    printf '%s' "$output" | pbcopy
+  elif command -v clip &> /dev/null; then
+    printf '%s' "$output" | clip
+  else
+    echo "⚠️  Clipboard tool not found. Output:" >&2
+    printf '%s' "$output"
+    return 1
+  fi
+
+  echo "✅ Staged changes copied to clipboard."
+}
+
